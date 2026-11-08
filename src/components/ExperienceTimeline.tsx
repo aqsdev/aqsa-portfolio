@@ -79,7 +79,7 @@ export function ExperienceTimeline({ roles }: { roles: Role[] }) {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    function update() {
+    function measure() {
       const el = listRef.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
@@ -88,12 +88,24 @@ export function ExperienceTimeline({ roles }: { roles: Role[] }) {
       const scrolled = viewportAnchor - rect.top;
       setProgress(Math.min(1, Math.max(0, total > 0 ? scrolled / total : 0)));
     }
-    update();
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    // rAF-throttled: a raw scroll listener can fire dozens of times per
+    // frame, each one triggering a React re-render, which is what makes
+    // scroll-linked effects feel janky instead of smooth.
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        measure();
+        ticking = false;
+      });
+    }
+    measure();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
     };
   }, []);
 
