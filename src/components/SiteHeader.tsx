@@ -35,6 +35,7 @@ export function SiteHeader() {
             <Link
               key={item.to}
               to={item.to}
+              activeOptions={{ exact: item.to === "/" }}
               className={navLinkClass}
               activeProps={{ className: navLinkActive, "aria-current": "page" }}
             >
@@ -75,20 +76,11 @@ export function SiteHeader() {
       >
         <nav aria-label="Mobile">
           <ul className="flex flex-col">
-            <li>
-              <Link
-                to="/"
-                activeOptions={{ exact: true }}
-                className="block border-b border-line py-3.5 font-display text-2xl font-semibold text-muted"
-                activeProps={{ className: "!text-ink", "aria-current": "page" }}
-              >
-                Home
-              </Link>
-            </li>
             {nav.map((item) => (
               <li key={item.to}>
                 <Link
                   to={item.to}
+                  activeOptions={{ exact: item.to === "/" }}
                   className="block border-b border-line py-3.5 font-display text-2xl font-semibold text-muted"
                   activeProps={{ className: "!text-ink", "aria-current": "page" }}
                 >

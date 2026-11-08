@@ -14,7 +14,7 @@ export const Route = createFileRoute("/about")({
       path: "/about",
       type: "profile",
       description:
-        "Aqsa Shakoor is a full-stack developer with 3+ years of experience in back-end systems, TYPO3 extension development and AI-powered workflow automation.",
+        "Aqsa Shakoor is an AI Engineer and full-stack developer with 4+ years of experience building LLM applications, RAG pipelines, AI agents and backend automation for enterprise clients.",
     }),
   component: About,
 });
@@ -66,23 +66,26 @@ function About() {
       <Container className="grid gap-14 pb-20 pt-14 sm:pt-20 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-20">
         <div>
           <h1 className="type-h1 max-w-[18ch]">
-            Full-stack developer, now building AI that does real work.
+            AI Engineer building systems that hold up in production.
           </h1>
           <div className="prose-body mt-8 text-[1.1rem]">
             <p>
-              I’m {site.name}, a full-stack developer with more than three years of experience in
-              back-end systems, TYPO3 extension development and AI-powered workflow automation.
+              I’m {site.name}, an AI Engineer and full-stack developer with 4+ years building
+              LLM-integrated applications, conversational AI, RAG-based document retrieval, AI
+              agents and automation workflows.
             </p>
             <p>
-              At Gosign GmbH, working remotely with a team in Germany, I built production systems:
-              TYPO3 extensions, REST API integrations, n8n automation workflows and a document
-              pipeline that redacts, merges and files PDFs without anyone touching them.
+              At Gosign GmbH, working remotely with a team in Germany, I contributed to enterprise
+              platforms supporting 100,000+ users across Europe: an internal AI platform with
+              multi-model LLM integration and RAG, Microsoft Entra ID and Graph API integrations for
+              SSO, and a document pipeline built to handle 1,000+ documents a month.
             </p>
             <p>
-              Now I help startups, small businesses and non-technical founders do the same thing:
-              take one slow, repetitive process and make it run by itself, reliably, with a person
-              still in charge of the decisions that matter. Because I come from back-end work, what
-              I ship comes with proper APIs, access control and logging, not just a prompt.
+              Now I work independently with startups, small businesses and non-technical founders on
+              the same thing: take a slow, repetitive process and make it run by itself, reliably,
+              with a person still in charge of the decisions that matter. Because I come from
+              backend engineering, what I ship comes with proper APIs, access control and logging,
+              not just a prompt.
             </p>
           </div>
           <div className="mt-9 flex flex-wrap gap-3">
@@ -191,9 +194,14 @@ function About() {
             {skillGroups.map((g) => (
               <div key={g.title}>
                 <h3 className="font-medium text-ink">{g.title}</h3>
-                <ul className="mt-3 space-y-1.5 text-muted">
+                <ul className="mt-3 flex flex-wrap gap-2">
                   {g.items.map((item) => (
-                    <li key={item}>{item}</li>
+                    <li
+                      key={item}
+                      className="rounded-full border border-line-strong bg-bg px-3 py-1 text-sm text-muted"
+                    >
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>

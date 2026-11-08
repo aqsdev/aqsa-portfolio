@@ -15,7 +15,7 @@ export function ProjectList({
     <ul className="border-t border-line">
       {projects.map((p) => (
         <li key={p.slug} className="border-b border-line">
-          <article className="group relative grid gap-6 py-9 transition-[background-color,padding] duration-300 md:grid-cols-[minmax(0,1fr)_15rem] md:gap-12 md:py-11 md:hover:-mx-5 md:hover:px-5 md:hover:bg-surface">
+          <article className="group relative grid gap-6 rounded-2xl px-5 py-9 -mx-5 transition-colors duration-300 hover:bg-surface md:grid-cols-[minmax(0,1fr)_15rem] md:gap-12 md:py-11">
             <div>
               <p className="flex flex-wrap gap-x-4 text-sm">
                 <span className="font-medium text-accent">{p.category}</span>

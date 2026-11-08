@@ -53,18 +53,18 @@
 /* ── Dark theme ────────────────────────────────────────────────────────── */
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0d1514;
-  --surface: #141f1e;
-  --sunken: #0a1110;
-  --ink: #e4ecea;
-  --muted: #9aaaa6;
-  --line: #243230;
-  --line-strong: #3b4d4a;
-  --accent: #5ccdb4;
-  --accent-ink: #062019;
-  --accent-soft: #143530;
-  --signal: #e4a54f;
-  --signal-soft: #3a2a14;
+  --bg: #0a0d0c;
+  --surface: #121716;
+  --sunken: #070908;
+  --ink: #edf2f0;
+  --muted: #9fada9;
+  --line: #222a28;
+  --line-strong: #39443f;
+  --accent: #5ee6a8;
+  --accent-ink: #04140c;
+  --accent-soft: #11291d;
+  --signal: #f0b35e;
+  --signal-soft: #332512;
   --danger: #f2877e;
 }
 

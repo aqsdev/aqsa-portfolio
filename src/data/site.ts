@@ -5,14 +5,15 @@
 export const site = {
   name: "Aqsa Shakoor",
   firstName: "Aqsa",
-  role: "AI Automation Engineer & Full-Stack Developer",
-  headline: "I build automations that think before they act.",
+  role: "AI Engineer & Backend Automation Specialist",
+  headline: "I build AI systems that run inside real businesses, not just demos.",
   intro:
-    "LLM apps, RAG pipelines and n8n workflows for startups and founders. Systems that read the situation, decide the next step and bring in a person when it matters.",
+    "LLM applications, RAG pipelines, conversational AI and n8n automation for teams that need production-grade systems, not prototypes. 4+ years shipping backend and AI work for enterprise clients across Europe.",
   description:
-    "Aqsa Shakoor is a full-stack developer and AI automation engineer with 3+ years of experience building n8n workflows, document processing pipelines, API integrations and LLM apps.",
+    "Aqsa Shakoor is an AI Engineer and full-stack developer with 4+ years of experience building LLM-integrated applications, RAG document retrieval, AI agents and automation workflows for enterprise platforms used by 100,000+ people.",
   url: import.meta.env.SITE_URL,
   email: "aqsashakoor21@gmail.com",
+  phone: "+92 311 7145120",
   linkedin: "https://www.linkedin.com/in/aqsa-shakoor-523041216/",
   github: "https://github.com/aqsdev",
   availability: {
@@ -42,27 +43,29 @@ export const site = {
 } as const;
 
 export const nav = [
+  { to: "/", label: "Home" },
   { to: "/work", label: "Work" },
   { to: "/about", label: "About" },
+  { to: "/resume", label: "Résumé" },
   { to: "/contact", label: "Contact" },
 ] as const;
 
 /** What you offer. Shown on the home page. */
 export const services = [
   {
-    title: "LLM apps and RAG",
-    body: "Assistants and search tools that answer from your own documents, cite their sources and stay inside the permissions you set.",
-    tools: ["OpenAI", "Anthropic", "LangChain", "Vector search", "Azure AI"],
+    title: "LLM apps, RAG and AI agents",
+    body: "Conversational AI, retrieval-augmented document search and multi-model LLM integrations that answer from your own data and cite their sources.",
+    tools: ["OpenAI APIs", "RAG", "Embeddings", "Vector search", "Supabase"],
   },
   {
-    title: "Workflow automation",
-    body: "n8n workflows and document pipelines that route, process and report on their own, and hand off to a person when a decision needs judgement.",
-    tools: ["n8n", "Python", "PDF processing", "REST APIs", "Docker"],
+    title: "AI automation and workflows",
+    body: "n8n workflows, browser automation and document pipelines that classify, redact, route and report on their own, with a person in the loop for judgement calls.",
+    tools: ["n8n", "Python", "Playwright", "PDF processing", "Docker"],
   },
   {
-    title: "Full-stack web apps",
-    body: "The product around the AI: APIs, dashboards and interfaces that people actually open every day.",
-    tools: ["React", "TypeScript", "Node.js", "PHP", "TYPO3", "WordPress"],
+    title: "Backend and enterprise integrations",
+    body: "APIs, SSO and platform integrations built for production: Microsoft Entra ID, Graph API, and the dashboards people actually open every day.",
+    tools: ["Node.js", "PHP", "TYPO3", "REST APIs", "Microsoft Graph"],
   },
 ] as const;
 
@@ -94,32 +97,68 @@ export const process = [
  */
 export const skillGroups = [
   {
-    title: "AI and automation",
+    title: "AI engineering & intelligent systems",
     items: [
-      "n8n workflows",
-      "AI chatbots",
-      "LLM integration (OpenAI, Anthropic)",
-      "RAG pipelines",
-      "LangChain",
-      "Azure AI",
-      "PDF and document processing",
-      "API integrations",
+      "Large Language Models (LLMs)",
+      "AI agents",
+      "Retrieval-Augmented Generation (RAG)",
+      "Conversational AI",
+      "Prompt engineering",
+      "OpenAI APIs",
+      "Multi-model LLM integration",
+      "Embeddings",
+      "Vector databases",
     ],
   },
   {
-    title: "Back end",
-    items: ["PHP", "Node.js", "Python", "FastAPI", "REST APIs", "MySQL"],
+    title: "AI automation & orchestration",
+    items: [
+      "n8n",
+      "Workflow automation",
+      "Business process automation",
+      "Webhooks",
+      "Browser automation",
+      "Playwright",
+      "Selenium",
+      "ManyChat",
+    ],
   },
   {
-    title: "Front end",
-    items: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5 and CSS3"],
+    title: "Backend engineering & APIs",
+    items: [
+      "Python",
+      "Node.js",
+      "PHP",
+      "TypeScript",
+      "RESTful API development",
+      "Asynchronous processing",
+      "System integration",
+    ],
   },
   {
-    title: "CMS",
+    title: "Frontend",
+    items: ["React.js", "TypeScript", "JavaScript", "HTML5", "CSS3", "Responsive web development"],
+  },
+  {
+    title: "CMS & enterprise platforms",
     items: ["TYPO3 (Extbase, Fluid)", "WordPress plugin development", "Joomla"],
   },
   {
-    title: "DevOps and tools",
-    items: ["Docker", "DigitalOcean", "ISPConfig", "MAMP", "GitHub and GitLab", "Jira"],
+    title: "Databases & storage",
+    items: ["MySQL", "PostgreSQL", "Redis", "SQLite", "Supabase", "Vector databases"],
+  },
+  {
+    title: "Cloud, DevOps & infrastructure",
+    items: [
+      "Docker",
+      "DigitalOcean",
+      "Linux server administration",
+      "CI/CD",
+      "Git, GitHub, GitLab",
+    ],
+  },
+  {
+    title: "Enterprise integrations",
+    items: ["Microsoft Graph API", "Microsoft Entra ID", "SSO", "Jira", "Slack", "Agile/Scrum"],
   },
 ] as const;

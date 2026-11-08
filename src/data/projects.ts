@@ -47,30 +47,33 @@ const allProjects: Project[] = [
     summary:
       "An email-triggered pipeline that redacts sensitive data from PDF attachments, merges the documents, stores them in TYPO3 and replies with a secure link, without anyone touching the files.",
     category: "Automation",
-    year: "", // TODO: add the year (hidden while empty)
+    year: "2024",
     role: "Design and development at Gosign GmbH",
     problem:
       "Documents arrived as email attachments and had to be checked for sensitive data, redacted, combined and filed by hand before anyone could reply. It was slow, repetitive work where a single missed field could expose private information.",
     solution: [
-      "I built a pipeline that starts the moment an email arrives. It pulls the PDF attachments, finds and redacts sensitive data, and merges the documents into one file.",
-      "The processed file is stored in TYPO3 through its API. The pipeline then generates a secure link to the file and sends an automated reply to the sender.",
+      "I built an event-driven n8n workflow that starts the moment an email arrives. It pulls the PDF attachments, and runs them through configurable blocklist and allowlist rules alongside an AI model to identify and redact sensitive terms while preserving protected ones. A separate signature-detection service handles redacting signatures.",
+      "The processed files are merged and stored in TYPO3 through its API. The pipeline then generates a public or protected file link and sends an automated reply to the sender.",
     ],
     pipeline: [
       { label: "Email arrives", detail: "An incoming email with PDF attachments starts the run." },
       { label: "Extract", detail: "Read the text and data from each PDF." },
-      { label: "Redact", detail: "Find sensitive data and remove it." },
+      {
+        label: "Redact",
+        detail: "An AI model and rule lists find and remove sensitive data and signatures.",
+      },
       { label: "Merge", detail: "Combine the documents into a single file." },
       { label: "Store in TYPO3", detail: "Upload the file to TYPO3 through its API." },
       { label: "Reply with a link", detail: "Send the sender a secure link automatically." },
     ],
     highlights: [
       "Runs end to end with no manual steps",
-      "Sensitive data is redacted before the file is stored or shared",
+      "AI-assisted redaction with configurable allow/block lists plus a dedicated signature-detection service",
       "Files are shared as secure links, not attachments",
       "Runs in production, deployed with Docker",
     ],
     results: [
-      "TODO: add a measurable result, e.g. documents processed per week or time saved per document",
+      "Built to handle 1,000+ documents in production for enterprise clients across Europe",
     ],
     stack: ["n8n", "PHP", "TYPO3", "REST APIs", "PDF processing", "Docker"],
     links: {},
@@ -83,62 +86,68 @@ const allProjects: Project[] = [
     summary:
       "A retrieval-augmented system that ingests large document sets, extracts their structure and answers questions with the source passage attached.",
     category: "AI & RAG",
-    year: "", // TODO: add the year (hidden while empty)
-    role: "Design, back end and AI pipeline",
+    year: "2025",
+    role: "Design, back end and AI pipeline at Gosign GmbH",
     problem:
-      "Teams were answering questions by searching through large sets of long documents by hand. Finding the right passage was slow, and answers depended on who happened to know where to look.",
+      "Teams were answering questions by searching through large sets of organisational documents by hand. Finding the right passage was slow, and answers depended on who happened to know where to look.",
     solution: [
-      "I built a pipeline that ingests the documents, splits them along their real structure (sections, tables, headings) rather than fixed-size chunks, and indexes them for semantic search.",
-      "Questions go through a retrieval-augmented generation step: the system finds the most relevant passages, and the language model answers only from those passages, with references back to the source.",
+      "I implemented and supported RAG-based document question-answering: document ingestion, chunking, embedding generation and vector storage using Supabase, so users can retrieve relevant information from organisational documents.",
+      "Questions go through a retrieval-augmented generation step: the system finds the most relevant passages, and the language model answers from those passages, with references back to the source.",
     ],
     pipeline: [
-      { label: "Ingest", detail: "Upload PDFs and office documents in bulk." },
-      { label: "Extract structure", detail: "Detect sections, tables and headings." },
-      { label: "Embed and index", detail: "Store passages in a vector index." },
+      { label: "Ingest", detail: "Upload documents in bulk." },
+      { label: "Chunk", detail: "Split documents into retrievable passages." },
+      {
+        label: "Embed and index",
+        detail: "Generate embeddings and store them in Supabase as a vector index.",
+      },
       { label: "Retrieve", detail: "Find the passages most relevant to the question." },
       { label: "Answer with sources", detail: "Generate an answer grounded in those passages." },
     ],
     highlights: [
-      "Structure-aware chunking, so answers keep the context of their section",
-      "Every answer links to the passages it was built from",
-      "FastAPI service that other tools can call",
+      "Document ingestion, chunking and embedding pipeline feeding a Supabase vector store",
+      "Every answer is grounded in retrieved passages",
+      "Part of an internal enterprise AI platform used across the organisation",
     ],
-    results: [
-      "TODO: add a measurable result, e.g. time to find an answer before and after",
-      "TODO: add scale, e.g. number of documents or pages processed",
-    ],
-    stack: ["Python", "FastAPI", "OpenAI", "Vector search", "RAG"],
+    results: ["Built as part of an enterprise AI platform supporting 100,000+ users across Europe"],
+    stack: ["Python", "OpenAI APIs", "Supabase", "Vector search", "RAG"],
     links: {},
   },
   {
     slug: "private-group-assistant",
     status: "published",
     featured: true,
-    title: "Private Group AI Assistant",
+    title: "Internal ChatGPT-Style AI Platform",
     summary:
-      "Shared team workspaces where invited members use one AI assistant for project discussion, roadmaps and architecture, with access scoped to the group.",
+      "An enterprise AI platform with collaborative group chats, multi-model text and image generation, and Microsoft 365 single sign-on.",
     category: "AI & RAG",
-    year: "", // TODO: add the year (hidden while empty)
-    role: "Full-stack development",
+    year: "2025",
+    role: "Contributor at Gosign GmbH",
     problem:
-      "Teams wanted to use an AI assistant together on the same project, but personal chat tools keep every conversation private to one person and have no idea who should see what.",
+      "Teams wanted to use an AI assistant together on the same project, with multi-model generation and secure access tied to their existing Microsoft 365 accounts, not a personal consumer chat tool.",
     solution: [
-      "I built a workspace model: a group owner invites members, and everyone in the group shares one assistant and one conversation history.",
-      "Access is checked on every request, so the assistant only ever sees the context of the group it is answering for.",
+      "I contributed to an internal enterprise AI platform featuring a conversational interface, collaborative group chats, and multi-model text and image generation.",
+      "I integrated enterprise authentication through Microsoft Entra ID and Microsoft Graph API, enabling single sign-on and secure access to organisational resources within Microsoft 365.",
     ],
     pipeline: [
-      { label: "Invite", detail: "The owner invites members to a private workspace." },
-      { label: "Authenticate", detail: "Members sign in and are checked against the group." },
-      { label: "Load group context", detail: "Only that workspace's history and files are used." },
-      { label: "Ask the assistant", detail: "The LLM answers with the shared project context." },
+      { label: "Sign in with Entra ID", detail: "Members authenticate through Microsoft 365 SSO." },
+      {
+        label: "Load group context",
+        detail: "Only that workspace's shared history and files are used.",
+      },
+      {
+        label: "Ask the assistant",
+        detail: "The LLM answers with the shared project context, across multiple models.",
+      },
+      { label: "Generate", detail: "Text or image generation, depending on what's asked." },
     ],
     highlights: [
-      "Group-scoped permissions enforced on the server",
-      "Shared history for roadmaps and architecture discussions",
-      "React front end on a Node.js API",
+      "Microsoft Entra ID and Graph API integration for SSO and secure Microsoft 365 access",
+      "Multi-model LLM integration for text and image generation",
+      "Shared group chat history for collaborative project discussion",
     ],
-    results: ["TODO: add a result, e.g. number of teams or active members"],
-    stack: ["Node.js", "React", "LLM APIs", "Authentication", "Permissions"],
+    results: ["Deployed internally for an enterprise platform with 100,000+ users across Europe"],
+    stack: ["LLM APIs", "Microsoft Entra ID", "Microsoft Graph API", "RAG", "Supabase"],
     links: {},
   },
   {
@@ -149,8 +158,8 @@ const allProjects: Project[] = [
     summary:
       "Automations that decide the next step instead of following a fixed path: routing, enrichment and reporting, with a person in the loop for uncertain cases.",
     category: "Automation",
-    year: "", // TODO: add the year (hidden while empty)
-    role: "Workflow design and development",
+    year: "2024",
+    role: "Workflow design and development at Gosign GmbH",
     problem:
       "Classic automations follow one fixed path. When an input doesn't fit the expected shape, the workflow either breaks or does the wrong thing quietly.",
     solution: [
@@ -174,39 +183,70 @@ const allProjects: Project[] = [
     links: {},
   },
 
-  // ─── Drafts: fill these in and change status to "published" ───────────────
   {
-    slug: "project-four",
-    status: "draft",
+    slug: "config-driven-conversational-ai",
+    status: "published",
     featured: false,
-    title: "Project title",
-    summary: "One sentence about what it does and for whom.",
-    category: "Web",
-    year: "",
-    role: "",
-    problem: "",
-    solution: [],
-    pipeline: [],
-    highlights: [],
+    title: "Config-Driven Conversational AI Engine",
+    summary:
+      "An asynchronous Python chatbot engine for ManyChat where conversation logic lives in YAML, not code, with Redis-backed queues for non-blocking messaging.",
+    category: "AI & RAG",
+    year: "2026",
+    role: "Freelance, self-employed",
+    problem:
+      "A client needed a ManyChat chatbot with structured, stage-based conversations, but hard-coding every flow in application code meant every change to the conversation needed a developer and a deploy.",
+    solution: [
+      "I built an asynchronous Python conversational engine integrated with ManyChat, supporting intent detection, structured playbooks and stage-based conversation orchestration.",
+      "Conversation flows, playbooks and logic are defined in YAML, so stages can be edited without touching the application code. OpenAI-compatible LLM APIs are integrated through the NanoGPT gateway with stage-specific, context-aware prompts.",
+    ],
+    pipeline: [
+      { label: "Message arrives", detail: "ManyChat forwards an incoming message to the engine." },
+      { label: "Detect intent", detail: "Classify what the user is asking for." },
+      { label: "Load playbook", detail: "Read the matching YAML-defined conversation stage." },
+      {
+        label: "Prompt the LLM",
+        detail: "Generate a context-aware response through the NanoGPT gateway.",
+      },
+      {
+        label: "Queue and persist",
+        detail: "Redis-backed queues and SQLite track conversation state.",
+      },
+    ],
+    highlights: [
+      "YAML-driven playbooks, so non-developers can change conversation logic",
+      "Redis-backed persistent job queues for non-blocking message processing",
+      "SQLite storage via aiosqlite for conversation-state persistence",
+    ],
     results: [],
-    stack: [],
+    stack: ["Python", "asyncio", "Redis", "SQLite", "PyYAML", "ManyChat", "LLM APIs"],
     links: {},
   },
   {
-    slug: "project-five",
-    status: "draft",
+    slug: "twitter-reply-automation-bot",
+    status: "published",
     featured: false,
-    title: "Project title",
-    summary: "One sentence about what it does and for whom.",
-    category: "Web",
-    year: "",
-    role: "",
-    problem: "",
-    solution: [],
-    pipeline: [],
-    highlights: [],
+    title: "Twitter/X Reply Automation Bot",
+    summary:
+      "A browser-automation bot that interacts with Twitter/X through driven workflows to handle repetitive reply operations.",
+    category: "Automation",
+    year: "2026",
+    role: "Freelance, self-employed",
+    problem:
+      "Replying to a high volume of posts on Twitter/X by hand doesn't scale, and the platform's restrictions rule out most API-based approaches.",
+    solution: [
+      "I built a browser automation bot using Playwright and Selenium that drives a real browser session to interact with Twitter/X and automate repetitive reply-related operations.",
+    ],
+    pipeline: [
+      { label: "Launch session", detail: "Start a browser session driven by Playwright/Selenium." },
+      { label: "Find targets", detail: "Locate posts that match the reply criteria." },
+      { label: "Reply", detail: "Compose and post replies through real browser interactions." },
+    ],
+    highlights: [
+      "Browser-driven automation, no reliance on restricted APIs",
+      "Handles repetitive reply operations at a volume manual work can't match",
+    ],
     results: [],
-    stack: [],
+    stack: ["Playwright", "Selenium", "Browser automation"],
     links: {},
   },
 ];

@@ -14,21 +14,36 @@ export type Role = {
 
 export const experience: Role[] = [
   {
+    title: "Freelance AI & Backend Developer",
+    company: "Self-Employed",
+    location: "Remote",
+    start: "Mar 2026",
+    end: "Present",
+    summary:
+      "AI-powered applications, intelligent automation systems and custom backend solutions for independent clients.",
+    highlights: [
+      "Built a configurable Python-based conversational AI engine integrating LLM APIs, intent detection, structured conversation flows and YAML-driven playbooks.",
+      "Integrated OpenAI-compatible LLM services through API gateways, implementing context-aware prompting and stage-based conversational experiences.",
+      "Developed browser automation solutions using Playwright and Selenium to automate repetitive web interactions and operational processes.",
+      "Built custom backend services and API integrations using Python, PHP and Node.js, connecting AI capabilities to existing applications and external platforms.",
+    ],
+  },
+  {
     title: "Backend & AI Automation Developer",
     company: "Gosign GmbH",
     location: "Remote, Germany",
     start: "Mar 2023",
     end: "Feb 2026",
     summary:
-      "Back-end systems, TYPO3 extension development and AI-driven automation for production environments.",
+      "Enterprise backend systems, AI platform development and TYPO3 integrations for clients across Europe.",
     highlights: [
-      "Built an email-triggered document pipeline that extracts and redacts sensitive data from PDFs, merges documents, stores them in TYPO3 and replies with secure links.",
-      "Developed and maintained custom TYPO3 extensions with Extbase and Fluid.",
-      "Built REST API integrations between external services and TYPO3.",
-      "Designed AI-driven automation workflows in n8n and integrated AI chatbots into web platforms.",
-      "Optimised MySQL queries to improve back-end performance.",
-      "Deployed applications with Docker and managed hosting with ISPConfig.",
-      "Worked with front-end teams using React and TypeScript.",
+      "Engineered and maintained enterprise software supporting a user base of 100,000+ across Europe.",
+      "Built an AI-powered document pipeline handling 1,000+ documents: PDF extraction, sensitive-data and signature redaction, merging, TYPO3 storage and automated replies.",
+      "Developed custom TYPO3 extensions and privacy-focused functionality supporting GDPR-related data protection requirements.",
+      "Contributed to an internal enterprise AI platform with multi-model LLM integration, collaborative chat, AI-powered text/image generation and RAG-based document search.",
+      "Implemented enterprise integrations with Microsoft Entra ID and Microsoft Graph API, enabling SSO and secure access to Microsoft 365 resources.",
+      "Architected custom TYPO3 extensions and REST API integrations using PHP, Extbase and Fluid for international client projects.",
+      "Collaborated with distributed engineering teams using Docker, GitHub, GitLab, code reviews and CI/CD.",
     ],
   },
   {
@@ -37,11 +52,11 @@ export const experience: Role[] = [
     location: "",
     start: "Jun 2022",
     end: "Sep 2022",
-    summary: "Custom WordPress themes and plugins for responsive, fast websites.",
+    summary: "Custom WordPress themes and plugins for responsive, SEO-friendly websites.",
     highlights: [
-      "Developed custom WordPress themes and plugins.",
-      "Built responsive, optimised websites.",
-      "Implemented front-end features with HTML, CSS and JavaScript.",
+      "Developed and customised WordPress themes and plugins using PHP for client-specific functionality.",
+      "Built responsive, SEO-friendly website interfaces using HTML, CSS, Bootstrap and JavaScript.",
+      "Supported debugging and cross-browser compatibility improvements.",
     ],
   },
 ];
@@ -58,6 +73,7 @@ export const education = [
 export const languages = [
   { name: "English", level: "Professional" },
   { name: "Urdu", level: "Native" },
+  { name: "Punjabi", level: "Native" },
   { name: "Arabic", level: "Basic" },
 ];
 
