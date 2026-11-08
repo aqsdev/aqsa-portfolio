@@ -41,8 +41,8 @@ export const Route = createRootRoute({
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1, viewport-fit=cover" },
       { name: "author", content: site.name },
-      { name: "theme-color", content: "#f4f6f5", media: "(prefers-color-scheme: light)" },
-      { name: "theme-color", content: "#0d1514", media: "(prefers-color-scheme: dark)" },
+      { name: "theme-color", content: "#f5f6f2", media: "(prefers-color-scheme: light)" },
+      { name: "theme-color", content: "#0a0c08", media: "(prefers-color-scheme: dark)" },
       { title: `${site.name} | ${site.role}` },
     ],
     links: [

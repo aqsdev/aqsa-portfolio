@@ -22,7 +22,7 @@ function Node({ x, y, w, kind, text, tone = "default" }: NodeProps) {
     tone === "accent" ? "fill-accent" : tone === "signal" ? "fill-signal" : "fill-muted";
   return (
     <g>
-      <rect x={x} y={y} width={w} height={H} rx={10} className={box} strokeWidth={1.25} />
+      <rect x={x} y={y} width={w} height={H} rx={H / 2} className={box} strokeWidth={1.25} />
       <text
         x={x + 16}
         y={y + 22}

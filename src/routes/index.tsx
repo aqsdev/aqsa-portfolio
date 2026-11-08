@@ -7,7 +7,7 @@ import { ProjectList } from "@/components/ProjectList";
 import { Reveal } from "@/components/Reveal";
 import { WorkflowDiagram } from "@/components/WorkflowDiagram";
 import { featuredProjects } from "@/data/projects";
-import { process, services, site } from "@/data/site";
+import { process, services, site, stats } from "@/data/site";
 import { seo } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
@@ -45,6 +45,19 @@ function Home() {
               </Link>
             </div>
             <Availability className="enter mt-9" style={{ animationDelay: "320ms" }} />
+            <div
+              className="enter mt-10 grid grid-cols-3 gap-4 border-t border-line pt-8"
+              style={{ animationDelay: "380ms" }}
+            >
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <p className="font-display text-2xl font-bold text-accent sm:text-3xl">
+                    {s.value}
+                  </p>
+                  <p className="mt-1 text-sm text-muted">{s.label}</p>
+                </div>
+              ))}
+            </div>
           </div>
           <div
             className="enter flex justify-center lg:justify-end"
@@ -92,10 +105,13 @@ function Home() {
               >
                 <h3 className="type-h3">{s.title}</h3>
                 <p className="mt-3 text-muted">{s.body}</p>
-                <p className="mt-5 text-sm text-muted">
-                  <span className="sr-only">Tools: </span>
-                  {s.tools.join(", ")}
-                </p>
+                <ul aria-label="Tools" className="mt-5 flex flex-wrap gap-2">
+                  {s.tools.map((t) => (
+                    <li key={t} className="pill">
+                      {t}
+                    </li>
+                  ))}
+                </ul>
               </Reveal>
             ))}
           </div>

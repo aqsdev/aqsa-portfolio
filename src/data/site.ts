@@ -50,6 +50,13 @@ export const nav = [
   { to: "/contact", label: "Contact" },
 ] as const;
 
+/** Headline numbers. Shown as stat tiles on the home page. */
+export const stats = [
+  { value: "4+", label: "Years of experience" },
+  { value: "100,000+", label: "Users on platforms I've built for" },
+  { value: "1,000+", label: "Documents handled by my automation" },
+] as const;
+
 /** What you offer. Shown on the home page. */
 export const services = [
   {

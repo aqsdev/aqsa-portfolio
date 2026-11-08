@@ -17,8 +17,8 @@ export function ProjectList({
         <li key={p.slug} className="border-b border-line">
           <article className="group relative grid gap-6 rounded-2xl px-5 py-9 -mx-5 transition-colors duration-300 hover:bg-surface md:grid-cols-[minmax(0,1fr)_15rem] md:gap-12 md:py-11">
             <div>
-              <p className="flex flex-wrap gap-x-4 text-sm">
-                <span className="font-medium text-accent">{p.category}</span>
+              <p className="flex flex-wrap items-center gap-3 text-sm">
+                <span className="pill pill-accent">{p.category}</span>
                 {p.year && <span className="text-muted">{p.year}</span>}
               </p>
               <Heading className="type-h2 mt-2">
@@ -34,12 +34,11 @@ export function ProjectList({
               <PipelineCompact steps={p.pipeline} className="mt-6" />
             </div>
             <div className="flex flex-col justify-between gap-6">
-              <ul
-                aria-label="Tech stack"
-                className="flex flex-wrap gap-x-3 gap-y-1 text-sm text-muted md:flex-col"
-              >
+              <ul aria-label="Tech stack" className="flex flex-wrap gap-2">
                 {p.stack.map((s) => (
-                  <li key={s}>{s}</li>
+                  <li key={s} className="pill">
+                    {s}
+                  </li>
                 ))}
               </ul>
               <span

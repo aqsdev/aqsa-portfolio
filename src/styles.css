@@ -35,16 +35,16 @@
 /* ── Light theme (default) ─────────────────────────────────────────────── */
 :root {
   color-scheme: light;
-  --bg: #f4f6f5;
+  --bg: #f5f6f2;
   --surface: #ffffff;
-  --sunken: #e9eeec;
-  --ink: #122120;
-  --muted: #53625f;
-  --line: #d5ddda;
-  --line-strong: #aebcb8;
-  --accent: #0a7564;
+  --sunken: #ecede6;
+  --ink: #161c0f;
+  --muted: #58604f;
+  --line: #daded1;
+  --line-strong: #b4bca3;
+  --accent: #4d7c0f;
   --accent-ink: #ffffff;
-  --accent-soft: #d9efe9;
+  --accent-soft: #e4efd1;
   --signal: #9a5a08;
   --signal-soft: #f6e7d2;
   --danger: #b3261e;
@@ -53,16 +53,16 @@
 /* ── Dark theme ────────────────────────────────────────────────────────── */
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg: #0a0d0c;
-  --surface: #121716;
-  --sunken: #070908;
-  --ink: #edf2f0;
-  --muted: #9fada9;
-  --line: #222a28;
-  --line-strong: #39443f;
-  --accent: #5ee6a8;
-  --accent-ink: #04140c;
-  --accent-soft: #11291d;
+  --bg: #0a0c08;
+  --surface: #12150e;
+  --sunken: #070805;
+  --ink: #eef2e6;
+  --muted: #a2ab93;
+  --line: #22281a;
+  --line-strong: #3a4530;
+  --accent: #a3e635;
+  --accent-ink: #11190a;
+  --accent-soft: #1d2a0f;
   --signal: #f0b35e;
   --signal-soft: #332512;
   --danger: #f2877e;
@@ -73,6 +73,16 @@
     background: var(--bg);
     -webkit-text-size-adjust: 100%;
     scroll-padding-top: 5rem;
+  }
+
+  /* Native <select> popups don't reliably inherit color-scheme from <html>;
+     set it directly so the dropdown list matches the active theme. */
+  select {
+    color-scheme: light;
+  }
+
+  [data-theme="dark"] select {
+    color-scheme: dark;
   }
 
   body {
@@ -159,6 +169,26 @@
   & p + p {
     margin-top: 1.1em;
   }
+}
+
+/* Small rounded tag used for tech stack, tools and status labels. */
+@utility pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  padding: 0.3rem 0.8rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+@utility pill-accent {
+  border-color: transparent;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 /* Text link with an underline that stays legible in both themes. */
