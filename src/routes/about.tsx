@@ -76,9 +76,10 @@ function About() {
             </p>
             <p>
               At Gosign GmbH, working remotely with a team in Germany, I contributed to enterprise
-              platforms supporting 100,000+ users across Europe: an internal AI platform with
-              multi-model LLM integration and RAG, Microsoft Entra ID and Graph API integrations for
-              SSO, and a document pipeline built to handle 1,000+ documents a month.
+              platforms supporting 100,000+ users across Europe, across the full stack: backend
+              architecture and API development, TYPO3 extensions, enterprise authentication and
+              integrations, AI-powered automation, and the internal AI platform itself. If it
+              touched a production system, I was probably in it.
             </p>
             <p>
               Now I work independently with startups, small businesses and non-technical founders on
