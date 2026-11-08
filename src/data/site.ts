@@ -46,6 +46,7 @@ export const nav = [
   { to: "/", label: "Home" },
   { to: "/work", label: "Work" },
   { to: "/about", label: "About" },
+  { to: "/experience", label: "Experience" },
   { to: "/resume", label: "Résumé" },
   { to: "/contact", label: "Contact" },
 ] as const;
@@ -138,7 +139,6 @@ export const skillGroups = [
       "PHP",
       "TypeScript",
       "RESTful API development",
-      "Asynchronous processing",
       "System integration",
     ],
   },
@@ -148,7 +148,7 @@ export const skillGroups = [
   },
   {
     title: "CMS & enterprise platforms",
-    items: ["TYPO3 (Extbase, Fluid)", "WordPress plugin development", "Joomla"],
+    items: ["TYPO3", "WordPress plugin development", "Joomla"],
   },
   {
     title: "Databases & storage",

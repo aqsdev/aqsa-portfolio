@@ -1,9 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Eye } from "lucide-react";
+import { ArrowUpRight, Eye } from "lucide-react";
 import { Availability } from "@/components/Availability";
 import { buttonStyles } from "@/components/button";
 import { Container, Layout } from "@/components/Layout";
-import { education, experience, formatPeriod, languages } from "@/data/experience";
 import { site, skillGroups } from "@/data/site";
 import { seo } from "@/lib/seo";
 
@@ -112,82 +111,25 @@ function About() {
         </div>
       </Container>
 
-      <section aria-labelledby="experience-title" className="border-t border-line py-20">
+      <section aria-labelledby="experience-cta-title" className="border-t border-line py-20">
         <Container>
-          <h2 id="experience-title" className="type-h2">
-            Experience
-          </h2>
-          <ol className="mt-10">
-            {experience.map((role) => {
-              const period = formatPeriod(role);
-              return (
-                <li
-                  key={`${role.title}-${role.company}`}
-                  className="grid gap-2 border-t border-line py-8 md:grid-cols-[13rem_minmax(0,1fr)] md:gap-10"
-                >
-                  <div className="text-[0.95rem] text-muted">
-                    <p>{period}</p>
-                    {role.location && <p>{role.location}</p>}
-                  </div>
-                  <div>
-                    <h3 className="type-h3">
-                      {role.title}
-                      {role.company && (
-                        <span className="font-normal text-muted">, {role.company}</span>
-                      )}
-                    </h3>
-                    <p className="mt-2 max-w-[64ch] text-muted">{role.summary}</p>
-                    {role.highlights.length > 0 && (
-                      <ul className="mt-4 max-w-[64ch] space-y-2">
-                        {role.highlights.map((h) => (
-                          <li key={h} className="flex gap-3">
-                            <span
-                              aria-hidden="true"
-                              className="mt-[0.7em] size-1.5 shrink-0 rounded-full bg-accent"
-                            />
-                            {h}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
-                </li>
-              );
-            })}
-          </ol>
-        </Container>
-      </section>
-
-      <section aria-labelledby="education-title" className="border-t border-line py-20">
-        <Container className="grid gap-14 md:grid-cols-2">
-          <div>
-            <h2 id="education-title" className="type-h2">
-              Education
-            </h2>
-            <ul className="mt-8 space-y-6">
-              {education.map((e) => (
-                <li key={e.degree}>
-                  <h3 className="type-h3">{e.degree}</h3>
-                  <p className="mt-1 text-muted">
-                    {e.school}, {formatPeriod(e)}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div>
-            <h2 id="languages-title" className="type-h2">
-              Languages
-            </h2>
-            <dl className="mt-8 divide-y divide-line border-y border-line">
-              {languages.map((l) => (
-                <div key={l.name} className="flex justify-between gap-4 py-3">
-                  <dt className="font-medium">{l.name}</dt>
-                  <dd className="text-muted">{l.level}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+          <Link
+            to="/experience"
+            className="group flex flex-wrap items-center justify-between gap-6 rounded-3xl border border-line-strong bg-surface px-8 py-10 transition-colors hover:border-accent"
+          >
+            <div>
+              <h2 id="experience-cta-title" className="type-h2">
+                Experience, education and languages
+              </h2>
+              <p className="mt-3 max-w-[56ch] text-muted">
+                Full work history with a year-by-year timeline, plus my education and languages.
+              </p>
+            </div>
+            <span className="inline-flex items-center gap-2 text-[0.95rem] font-medium text-ink">
+              View experience
+              <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </span>
+          </Link>
         </Container>
       </section>
 
