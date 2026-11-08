@@ -44,11 +44,11 @@ export const site = {
 
 export const nav = [
   { to: "/", label: "Home" },
-  { to: "/work", label: "Work" },
   { to: "/about", label: "About" },
+  { to: "/work", label: "Work" },
   { to: "/experience", label: "Experience" },
-  { to: "/resume", label: "Résumé" },
   { to: "/contact", label: "Contact" },
+  { to: "/resume", label: "Résumé" },
 ] as const;
 
 /** Headline numbers. Shown as stat tiles on the home page. */
