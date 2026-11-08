@@ -56,7 +56,7 @@ function buildEmail(data: ContactInput) {
 }
 
 export const sendContactMessage = createServerFn({ method: "POST" })
-  .inputValidator((input: unknown) => input)
+  .validator((input: unknown) => input)
   .handler(async ({ data: raw }): Promise<ContactResult> => {
     const parsed = contactSchema.safeParse(raw);
     if (!parsed.success) {
