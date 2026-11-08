@@ -60,19 +60,19 @@ export const stats = [
 /** What you offer. Shown on the home page. */
 export const services = [
   {
+    title: "Full-stack web development",
+    body: "Complete web products, not just the AI layer: APIs, dashboards, CMS platforms and the interfaces people actually open every day.",
+    tools: ["PHP", "Python", "Node.js", "React", "TYPO3", "WordPress", "MySQL"],
+  },
+  {
     title: "LLM apps, RAG and AI agents",
-    body: "Conversational AI, retrieval-augmented document search and multi-model LLM integrations that answer from your own data and cite their sources.",
-    tools: ["OpenAI APIs", "RAG", "Embeddings", "Vector search", "Supabase"],
+    body: "Conversational AI, retrieval-augmented document search and multi-model LLM integrations that answer from your own data, cite their sources, and plug into enterprise sign-in (Microsoft Entra ID, Graph API).",
+    tools: ["OpenAI APIs", "RAG", "Embeddings", "Vector search", "Supabase", "Microsoft Graph"],
   },
   {
     title: "AI automation and workflows",
-    body: "n8n workflows, browser automation and document pipelines that classify, redact, route and report on their own, with a person in the loop for judgement calls.",
-    tools: ["n8n", "Python", "Playwright", "PDF processing", "Docker"],
-  },
-  {
-    title: "Backend and enterprise integrations",
-    body: "APIs, SSO and platform integrations built for production: Microsoft Entra ID, Graph API, and the dashboards people actually open every day.",
-    tools: ["Node.js", "PHP", "TYPO3", "REST APIs", "Microsoft Graph"],
+    body: "n8n workflows, browser automation and document pipelines that classify, redact, route and report on their own, backed by proper REST APIs, with a person in the loop for judgement calls.",
+    tools: ["n8n", "Python", "Playwright", "PDF processing", "Docker", "REST APIs"],
   },
 ] as const;
 

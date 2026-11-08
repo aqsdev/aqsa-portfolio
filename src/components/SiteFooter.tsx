@@ -20,11 +20,6 @@ export function SiteFooter() {
         <nav aria-label="Footer">
           <p className="text-sm font-medium text-ink">Pages</p>
           <ul className="mt-3 space-y-2 text-[0.95rem]">
-            <li>
-              <Link to="/" className="text-muted transition-colors hover:text-ink">
-                Home
-              </Link>
-            </li>
             {nav.map((item) => (
               <li key={item.to}>
                 <Link to={item.to} className="text-muted transition-colors hover:text-ink">
