@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Download, Menu, X } from "lucide-react";
+import { Eye, Menu, X } from "lucide-react";
 import { useEffect, useId, useState } from "react";
 import { nav, site } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -49,10 +49,11 @@ export function SiteHeader() {
           {site.resume.ready && (
             <a
               href={site.resume.href}
+              target="_blank"
+              rel="noopener noreferrer"
               className={buttonStyles("secondary", "hidden py-2 sm:inline-flex")}
-              download
             >
-              <Download className="size-4" aria-hidden="true" />
+              <Eye className="size-4" aria-hidden="true" />
               Résumé
             </a>
           )}
@@ -91,9 +92,14 @@ export function SiteHeader() {
           </ul>
         </nav>
         {site.resume.ready && (
-          <a href={site.resume.href} download className={cn(buttonStyles("secondary"), "mt-6")}>
-            <Download className="size-4" aria-hidden="true" />
-            Download résumé
+          <a
+            href={site.resume.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={cn(buttonStyles("secondary"), "mt-6")}
+          >
+            <Eye className="size-4" aria-hidden="true" />
+            View résumé
           </a>
         )}
       </div>

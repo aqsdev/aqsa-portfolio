@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Download } from "lucide-react";
+import { Eye } from "lucide-react";
 import { Availability } from "@/components/Availability";
 import { buttonStyles } from "@/components/button";
 import { Container, Layout } from "@/components/Layout";
@@ -93,9 +93,14 @@ function About() {
               Get in touch
             </Link>
             {site.resume.ready && (
-              <a href={site.resume.href} download className={buttonStyles("secondary")}>
-                <Download className="size-4" aria-hidden="true" />
-                Download résumé
+              <a
+                href={site.resume.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={buttonStyles("secondary")}
+              >
+                <Eye className="size-4" aria-hidden="true" />
+                View résumé
               </a>
             )}
           </div>
