@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { formatPeriod, type Role } from "@/data/experience";
 
-function TimelineItem({ role, isLast }: { role: Role; isLast: boolean }) {
+function TimelineItem({ role, index }: { role: Role; index: number }) {
   const ref = useRef<HTMLLIElement>(null);
   const [visible, setVisible] = useState(false);
 
@@ -28,20 +28,17 @@ function TimelineItem({ role, isLast }: { role: Role; isLast: boolean }) {
       <span
         aria-hidden="true"
         className="absolute left-[3px] top-1.5 size-3 rounded-full border-2 border-accent bg-bg transition-transform duration-500 ease-out"
-        style={{ transform: visible ? "scale(1)" : "scale(0)" }}
+        style={{
+          transform: visible ? "scale(1)" : "scale(0)",
+          transitionDelay: visible ? `${Math.min(index, 3) * 80}ms` : "0ms",
+        }}
       />
-      {!isLast && (
-        <span
-          aria-hidden="true"
-          className="absolute bottom-0 left-[8.5px] top-6 w-0 origin-top border-l-2 border-dashed border-line-strong transition-transform duration-[1200ms] ease-out"
-          style={{ transform: visible ? "scaleY(1)" : "scaleY(0)" }}
-        />
-      )}
       <div
         className="transition-all duration-700 ease-out"
         style={{
           opacity: visible ? 1 : 0,
           transform: visible ? "translateY(0)" : "translateY(18px)",
+          transitionDelay: visible ? `${Math.min(index, 3) * 80}ms` : "0ms",
         }}
       >
         <p className="text-[0.95rem] text-muted">
@@ -71,15 +68,44 @@ function TimelineItem({ role, isLast }: { role: Role; isLast: boolean }) {
   );
 }
 
+/**
+ * A single dashed line spans the whole list and draws itself in step with
+ * scroll position, rather than animating per-card: a tall card (lots of
+ * highlights) can't leave the line short of the next dot, because there's
+ * only one line and its length is tied directly to scroll progress.
+ */
 export function ExperienceTimeline({ roles }: { roles: Role[] }) {
+  const listRef = useRef<HTMLOListElement>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    function update() {
+      const el = listRef.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const viewportAnchor = window.innerHeight * 0.85;
+      const total = rect.height + viewportAnchor - window.innerHeight * 0.25;
+      const scrolled = viewportAnchor - rect.top;
+      setProgress(Math.min(1, Math.max(0, total > 0 ? scrolled / total : 0)));
+    }
+    update();
+    window.addEventListener("scroll", update, { passive: true });
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, []);
+
   return (
-    <ol className="mt-4">
+    <ol ref={listRef} className="relative mt-4">
+      <span
+        aria-hidden="true"
+        className="absolute left-[8.5px] top-6 w-0 border-l-2 border-dashed border-line-strong"
+        style={{ height: `calc((100% - 3.5rem) * ${progress})` }}
+      />
       {roles.map((role, i) => (
-        <TimelineItem
-          key={`${role.title}-${role.company}`}
-          role={role}
-          isLast={i === roles.length - 1}
-        />
+        <TimelineItem key={`${role.title}-${role.company}`} role={role} index={i} />
       ))}
     </ol>
   );

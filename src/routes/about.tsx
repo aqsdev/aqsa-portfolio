@@ -3,6 +3,7 @@ import { ArrowUpRight, Eye } from "lucide-react";
 import { Availability } from "@/components/Availability";
 import { buttonStyles } from "@/components/button";
 import { Container, Layout } from "@/components/Layout";
+import { Reveal } from "@/components/Reveal";
 import { site, skillGroups } from "@/data/site";
 import { seo } from "@/lib/seo";
 
@@ -113,7 +114,8 @@ function About() {
 
       <section aria-labelledby="experience-cta-title" className="border-t border-line py-20">
         <Container>
-          <Link
+          <Reveal
+            as={Link}
             to="/experience"
             className="group flex flex-wrap items-center justify-between gap-6 rounded-3xl border border-line-strong bg-surface px-8 py-10 transition-colors hover:border-accent"
           >
@@ -129,7 +131,7 @@ function About() {
               View experience
               <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </span>
-          </Link>
+          </Reveal>
         </Container>
       </section>
 
@@ -139,20 +141,21 @@ function About() {
             Skills and tools
           </h2>
           <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
-            {skillGroups.map((g) => (
-              <div key={g.title}>
+            {skillGroups.map((g, gi) => (
+              <Reveal key={g.title} as="div" delay={Math.min(gi, 5) * 90}>
                 <h3 className="font-medium text-ink">{g.title}</h3>
                 <ul className="mt-3 flex flex-wrap gap-2">
-                  {g.items.map((item) => (
+                  {g.items.map((item, ii) => (
                     <li
                       key={item}
-                      className="rounded-full border border-line-strong bg-bg px-3 py-1 text-sm text-muted"
+                      className="pill-cascade rounded-full border border-line-strong bg-bg px-3 py-1 text-sm text-muted"
+                      style={{ transitionDelay: `${Math.min(gi, 5) * 90 + ii * 45}ms` }}
                     >
                       {item}
                     </li>
                   ))}
                 </ul>
-              </div>
+              </Reveal>
             ))}
           </div>
         </Container>
@@ -164,11 +167,16 @@ function About() {
             How I work
           </h2>
           <div className="mt-10 grid gap-10 md:grid-cols-3">
-            {principles.map((p) => (
-              <div key={p.title} className="border-t-2 border-accent pt-6">
+            {principles.map((p, i) => (
+              <Reveal
+                key={p.title}
+                as="div"
+                delay={i * 90}
+                className="border-t-2 border-accent pt-6 transition-transform duration-300 hover:-translate-y-1"
+              >
                 <h3 className="type-h3">{p.title}</h3>
                 <p className="mt-2 text-muted">{p.body}</p>
-              </div>
+              </Reveal>
             ))}
           </div>
         </Container>

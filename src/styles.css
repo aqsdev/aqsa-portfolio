@@ -207,6 +207,20 @@
   }
 }
 
+/* A small tag inside a Reveal group that cascades in slightly after its
+   parent becomes visible. Pair with an inline transitionDelay per item. */
+.pill-cascade {
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.45s ease,
+    transform 0.45s ease;
+}
+.reveal[data-visible="true"] .pill-cascade {
+  opacity: 1;
+  transform: none;
+}
+
 /* A single, orchestrated page-load entrance for the hero only. */
 @keyframes rise {
   from {

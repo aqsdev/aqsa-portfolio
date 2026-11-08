@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/data/projects";
 import { PipelineCompact } from "./Pipeline";
+import { Reveal } from "./Reveal";
 
 export function ProjectList({
   projects,
@@ -13,9 +14,13 @@ export function ProjectList({
   const Heading = headingLevel;
   return (
     <ul className="border-t border-line">
-      {projects.map((p) => (
+      {projects.map((p, i) => (
         <li key={p.slug} className="border-b border-line">
-          <article className="group relative grid gap-6 rounded-2xl px-5 py-9 -mx-5 transition-colors duration-300 hover:bg-surface md:grid-cols-[minmax(0,1fr)_15rem] md:gap-12 md:py-11">
+          <Reveal
+            as="article"
+            delay={Math.min(i, 4) * 90}
+            className="group relative grid gap-6 rounded-2xl px-5 py-9 -mx-5 transition-colors duration-300 hover:bg-surface md:grid-cols-[minmax(0,1fr)_15rem] md:gap-12 md:py-11"
+          >
             <div>
               <p className="flex flex-wrap items-center gap-3 text-sm">
                 <span className="pill pill-accent">{p.category}</span>
@@ -49,7 +54,7 @@ export function ProjectList({
                 <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
               </span>
             </div>
-          </article>
+          </Reveal>
         </li>
       ))}
     </ul>
