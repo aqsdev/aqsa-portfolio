@@ -177,11 +177,11 @@ export function ContactForm() {
               "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237d8c88' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E\")",
           }}
         >
-          <option value="" disabled>
+          <option value="" disabled className="bg-black text-white">
             Choose one
           </option>
           {topics.map((t) => (
-            <option key={t.value} value={t.value}>
+            <option key={t.value} value={t.value} className="bg-black text-white">
               {t.label}
             </option>
           ))}
